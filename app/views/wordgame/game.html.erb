@@ -1,0 +1,27 @@
+<h1>Welcome to the Wordgame!</h1>
+<p>Enter the size of the grid you want!</p>
+
+<form action="/game">
+  <label for="Enter size of grid"></label>
+  <input type="text" id="grid" name="grid_size" placeholder="#5 - 12">
+  <input type="submit" value="Enter">
+</form>
+
+<h2>Here is the Grid:</h2>
+<%= @grid %>
+
+
+<h2>What is your guess?:</h2>
+<%= @message %>
+<form action="/score">
+  <label for="What is your guess?"></label>
+  <input type="text" id="guess" name="guess" placeholder="Guess!">
+  <input type="hidden" name="start_time" value="<%=Time.now.to_i %>">
+  <input type="hidden" name="grid" value="<%= @grid.to_s %>">
+  <input type="submit" value="Here's my guess!">
+</form>
+<br>
+<%= link_to "Reset", :controller => "wordgame", :action => "game" %>
+<!-- <h3>Try Again!</h3> -->
+
+
